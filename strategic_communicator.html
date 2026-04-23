@@ -13,19 +13,18 @@
   .ie-badge { background: #A93255; color: #fff; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; }
   .header h1 { font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 6px; }
   .header p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.5; }
-  .framework-bar { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 12px 14px; margin-top: 1rem; display: flex; gap: 0; align-items: center; }
+  .framework-bar { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 12px 14px; margin-top: 1rem; display: flex; align-items: center; }
   .q-pill { flex: 1; text-align: center; font-size: 12px; color: rgba(255,255,255,0.9); line-height: 1.4; }
   .q-pill strong { display: block; font-size: 15px; font-weight: 600; color: #FACFAD; margin-bottom: 2px; }
   .q-arrow { color: rgba(255,255,255,0.3); font-size: 16px; padding: 0 8px; }
   .card { background: #fff; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid rgba(25,50,60,0.1); }
   .card label { display: block; font-size: 13px; font-weight: 600; color: #19323C; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
-  .card .sublabel { font-size: 13px; color: #6B7280; font-weight: 400; text-transform: none; letter-spacing: 0; margin-top: -6px; margin-bottom: 10px; line-height: 1.5; }
-  .type-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-  .type-btn { font-size: 13px; padding: 7px 14px; border-radius: 20px; border: 1.5px solid rgba(25,50,60,0.2); background: #fff; color: #19323C; cursor: pointer; transition: all 0.15s; font-family: inherit; }
-  .type-btn.active { background: #19323C; color: #fff; border-color: #19323C; font-weight: 500; }
-  .aud-btn { font-size: 13px; padding: 7px 14px; border-radius: 20px; border: 1.5px solid rgba(25,50,60,0.2); background: #fff; color: #19323C; cursor: pointer; transition: all 0.15s; font-family: inherit; }
-  .aud-btn.active { background: #A93255; color: #fff; border-color: #A93255; font-weight: 500; }
-  .audience-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .sublabel { font-size: 13px; color: #6B7280; margin-bottom: 10px; line-height: 1.5; }
+  .btn-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 0; }
+  .sel-btn { font-size: 13px; padding: 7px 14px; border-radius: 20px; border: 1.5px solid rgba(25,50,60,0.2); background: #fff; color: #19323C; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+  .sel-btn:hover { border-color: #19323C; }
+  .sel-btn.active { background: #19323C; color: #fff; border-color: #19323C; font-weight: 500; }
+  .sel-btn.active-pink { background: #A93255; color: #fff; border-color: #A93255; font-weight: 500; }
   textarea { width: 100%; min-height: 180px; font-size: 14px; line-height: 1.7; padding: 14px; border-radius: 8px; border: 1.5px solid rgba(25,50,60,0.2); background: #FAFAF8; color: #19323C; resize: vertical; font-family: inherit; transition: border-color 0.15s; }
   textarea:focus { outline: none; border-color: #19323C; background: #fff; }
   .char-count { font-size: 12px; color: #6B7280; text-align: right; margin-top: 6px; }
@@ -48,18 +47,14 @@
   .q-card { background: #fff; border-radius: 10px; border: 1px solid rgba(25,50,60,0.1); padding: 14px; text-align: center; }
   .q-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #6B7280; margin-bottom: 6px; }
   .q-score { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
-  .q-score.pass { color: #27500A; }
-  .q-score.warn { color: #633806; }
-  .q-score.fail { color: #791F1F; }
+  .pass { color: #27500A; } .warn { color: #633806; } .fail { color: #791F1F; }
   .q-status { font-size: 12px; color: #6B7280; }
-  .section-title { font-size: 12px; font-weight: 600; color: #6B7280; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; margin-top: 1rem; }
+  .sec-title { font-size: 12px; font-weight: 600; color: #6B7280; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; margin-top: 1rem; }
   .analysis-card { background: #fff; border-radius: 10px; border: 1px solid rgba(25,50,60,0.08); padding: 1.25rem; margin-bottom: 1rem; }
   .analysis-card h3 { font-size: 14px; font-weight: 600; color: #19323C; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-  .status-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  .dot-pass { background: #639922; }
-  .dot-warn { background: #BA7517; }
-  .dot-fail { background: #E24B4A; }
-  .analysis-text { font-size: 13px; color: #3A5560; line-height: 1.6; margin-bottom: 10px; }
+  .sdot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sdot-pass { background: #639922; } .sdot-warn { background: #BA7517; } .sdot-fail { background: #E24B4A; }
+  .analysis-text { font-size: 13px; color: #3A5560; line-height: 1.6; }
   .rewrite-box { background: #F3F7F0; border-radius: 8px; border-left: 3px solid #A93255; padding: 12px 14px; margin-top: 10px; }
   .rewrite-label { font-size: 11px; font-weight: 600; color: #A93255; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
   .rewrite-text { font-size: 13px; color: #19323C; line-height: 1.6; font-style: italic; }
@@ -68,7 +63,7 @@
   .strategic-rewrite p { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.7; white-space: pre-wrap; }
   .copy-btn { margin-top: 12px; font-size: 13px; padding: 7px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: rgba(255,255,255,0.7); cursor: pointer; font-family: inherit; transition: all 0.15s; }
   .copy-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
-  .tips-card { background: #FAEEDA; border-radius: 10px; padding: 14px 16px; margin-bottom: 1rem; border: 1px solid #FAC775; }
+  .tips-card { background: #FAEEDA; border-radius: 10px; padding: 14px 16px; margin-bottom: 1rem; border: 1px solid #FAC775; display: none; }
   .tips-title { font-size: 13px; font-weight: 600; color: #633806; margin-bottom: 8px; }
   .tips-list { font-size: 13px; color: #633806; line-height: 1.7; padding-left: 16px; }
   .reset-btn { width: 100%; padding: 12px; font-size: 14px; font-weight: 500; background: transparent; color: #6B7280; border: 1.5px solid rgba(25,50,60,0.15); border-radius: 8px; cursor: pointer; font-family: inherit; transition: all 0.15s; margin-top: 0.5rem; }
@@ -76,11 +71,12 @@
   .error-box { background: #FCEBEB; border-radius: 10px; padding: 14px 16px; border: 1px solid #F09595; margin-bottom: 1rem; display: none; }
   .error-box p { font-size: 13px; color: #791F1F; line-height: 1.5; }
   .footer { text-align: center; padding: 1rem 0; font-size: 12px; color: #6B7280; }
-  @media (max-width: 480px) { .three-q-grid { grid-template-columns: 1fr; } .score-header { flex-direction: column; gap: 0.75rem; text-align: center; } }
+  @media (max-width: 480px) { .three-q-grid { grid-template-columns: 1fr; } .score-header { flex-direction: column; text-align: center; } }
 </style>
 </head>
 <body>
 <div class="container">
+
   <div class="header">
     <div class="header-top"><span class="ie-badge">Your Edge</span></div>
     <h1>The Strategic Communicator</h1>
@@ -96,30 +92,30 @@
 
   <div class="card">
     <label>What type of communication is this?</label>
-    <div class="type-grid" id="type-grid">
-      <button class="type-btn active" data-type="email update">Email update</button>
-      <button class="type-btn" data-type="meeting talking points">Meeting talking points</button>
-      <button class="type-btn" data-type="report or analysis summary">Report / analysis</button>
-      <button class="type-btn" data-type="presentation summary">Presentation summary</button>
-      <button class="type-btn" data-type="slack or teams message">Slack / Teams message</button>
+    <div class="btn-group" id="type-group">
+      <button class="sel-btn active" data-val="email update">Email update</button>
+      <button class="sel-btn" data-val="meeting talking points">Meeting talking points</button>
+      <button class="sel-btn" data-val="report or analysis summary">Report / analysis</button>
+      <button class="sel-btn" data-val="presentation summary">Presentation summary</button>
+      <button class="sel-btn" data-val="slack or teams message">Slack / Teams message</button>
     </div>
   </div>
 
   <div class="card">
     <label>Who is your audience?</label>
-    <div class="sublabel">This changes how the tool calibrates its feedback.</div>
-    <div class="audience-grid" id="aud-grid">
-      <button class="aud-btn active" data-aud="senior leader or executive who needs high-level insights and clear decisions">Senior leader / executive</button>
-      <button class="aud-btn" data-aud="peer or colleague at the same level">Peer / colleague</button>
-      <button class="aud-btn" data-aud="client or external stakeholder">Client / external</button>
-      <button class="aud-btn" data-aud="cross-functional partner like product, sales, or clinical teams">Cross-functional partner</button>
-      <button class="aud-btn" data-aud="direct report or team member">Direct report / team</button>
+    <p class="sublabel">This changes how the tool calibrates its feedback.</p>
+    <div class="btn-group" id="aud-group">
+      <button class="sel-btn active-pink" data-val="senior leader or executive who needs high-level insights and clear decisions">Senior leader / executive</button>
+      <button class="sel-btn" data-val="peer or colleague at the same level">Peer / colleague</button>
+      <button class="sel-btn" data-val="client or external stakeholder">Client / external</button>
+      <button class="sel-btn" data-val="cross-functional partner like product, sales, or clinical teams">Cross-functional partner</button>
+      <button class="sel-btn" data-val="direct report or team member">Direct report / team</button>
     </div>
   </div>
 
   <div class="card">
     <label>Paste your content here</label>
-    <div class="sublabel">Paste what you're planning to send or say — the more complete, the better the feedback.</div>
+    <p class="sublabel">Paste what you're planning to send or say — the more complete, the better the feedback.</p>
     <textarea id="content-input" placeholder="Paste your email, talking points, report summary, or update here..." oninput="updateCount()"></textarea>
     <div class="char-count" id="char-count">0 words</div>
   </div>
@@ -147,46 +143,34 @@
       </div>
     </div>
 
-    <p class="section-title">Three questions breakdown</p>
+    <p class="sec-title">Three questions breakdown</p>
     <div class="three-q-grid" id="three-q-grid"></div>
 
-    <p class="section-title">Detailed feedback</p>
-
+    <p class="sec-title">Detailed feedback</p>
     <div class="analysis-card">
-      <h3><span class="status-dot" id="q1-dot"></span>Question 1 — What is it?</h3>
+      <h3><span class="sdot" id="q1-dot"></span>Question 1 — What is it?</h3>
       <div class="analysis-text" id="q1-feedback"></div>
-      <div class="rewrite-box" id="q1-rewrite" style="display:none;">
-        <div class="rewrite-label">Suggested improvement</div>
-        <div class="rewrite-text" id="q1-suggestion"></div>
-      </div>
+      <div class="rewrite-box" id="q1-rewrite" style="display:none;"><div class="rewrite-label">Suggested improvement</div><div class="rewrite-text" id="q1-suggestion"></div></div>
     </div>
-
     <div class="analysis-card">
-      <h3><span class="status-dot" id="q2-dot"></span>Question 2 — Is it good or bad?</h3>
+      <h3><span class="sdot" id="q2-dot"></span>Question 2 — Is it good or bad?</h3>
       <div class="analysis-text" id="q2-feedback"></div>
-      <div class="rewrite-box" id="q2-rewrite" style="display:none;">
-        <div class="rewrite-label">Suggested improvement</div>
-        <div class="rewrite-text" id="q2-suggestion"></div>
-      </div>
+      <div class="rewrite-box" id="q2-rewrite" style="display:none;"><div class="rewrite-label">Suggested improvement</div><div class="rewrite-text" id="q2-suggestion"></div></div>
     </div>
-
     <div class="analysis-card">
-      <h3><span class="status-dot" id="q3-dot"></span>Question 3 — What should we do?</h3>
+      <h3><span class="sdot" id="q3-dot"></span>Question 3 — What should we do?</h3>
       <div class="analysis-text" id="q3-feedback"></div>
-      <div class="rewrite-box" id="q3-rewrite" style="display:none;">
-        <div class="rewrite-label">Suggested improvement</div>
-        <div class="rewrite-text" id="q3-suggestion"></div>
-      </div>
+      <div class="rewrite-box" id="q3-rewrite" style="display:none;"><div class="rewrite-label">Suggested improvement</div><div class="rewrite-text" id="q3-suggestion"></div></div>
     </div>
 
-    <p class="section-title">Strategic rewrite</p>
+    <p class="sec-title">Strategic rewrite</p>
     <div class="strategic-rewrite">
       <h3>Here's what a more strategic version looks like</h3>
       <p id="strategic-version">—</p>
       <button class="copy-btn" onclick="copyRewrite()">Copy rewrite</button>
     </div>
 
-    <div class="tips-card" id="tips-card" style="display:none;">
+    <div class="tips-card" id="tips-card">
       <div class="tips-title">Watch out for these habits</div>
       <ul class="tips-list" id="tips-list"></ul>
     </div>
@@ -198,145 +182,158 @@
 </div>
 
 <script>
-  var WORKER_URL = 'https://your-edge.mandy-738.workers.dev';
-  var selectedType = 'email update';
-  var selectedAudience = 'senior leader or executive who needs high-level insights and clear decisions';
+var WORKER_URL = 'https://your-edge.mandy-738.workers.dev';
+var selectedType = 'email update';
+var selectedAudience = 'senior leader or executive who needs high-level insights and clear decisions';
 
-  document.querySelectorAll('.type-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      document.querySelectorAll('.type-btn').forEach(function(b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      selectedType = btn.dataset.type;
+// Type buttons
+document.getElementById('type-group').querySelectorAll('.sel-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.getElementById('type-group').querySelectorAll('.sel-btn').forEach(function(b) {
+      b.classList.remove('active');
     });
+    btn.classList.add('active');
+    selectedType = btn.dataset.val;
   });
+});
 
-  document.querySelectorAll('.aud-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      document.querySelectorAll('.aud-btn').forEach(function(b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      selectedAudience = btn.dataset.aud;
+// Audience buttons
+document.getElementById('aud-group').querySelectorAll('.sel-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.getElementById('aud-group').querySelectorAll('.sel-btn').forEach(function(b) {
+      b.classList.remove('active-pink');
+      b.classList.remove('active');
     });
+    btn.classList.add('active-pink');
+    selectedAudience = btn.dataset.val;
   });
+});
 
-  function updateCount() {
-    var text = document.getElementById('content-input').value.trim();
-    var words = text ? text.split(/\s+/).length : 0;
-    document.getElementById('char-count').textContent = words + ' word' + (words !== 1 ? 's' : '');
+function updateCount() {
+  var text = document.getElementById('content-input').value.trim();
+  var words = text ? text.split(/\s+/).length : 0;
+  document.getElementById('char-count').textContent = words + ' word' + (words !== 1 ? 's' : '');
+}
+
+async function runAnalysis() {
+  var content = document.getElementById('content-input').value.trim();
+  if (!content || content.length < 20) {
+    alert('Please paste your content before analyzing.');
+    return;
   }
 
-  async function runAnalysis() {
-    var content = document.getElementById('content-input').value.trim();
-    if (!content || content.length < 20) {
-      alert('Please paste your content before analyzing.');
-      return;
+  var btn = document.getElementById('analyze-btn');
+  btn.disabled = true;
+  btn.textContent = 'Analyzing...';
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('error-box').style.display = 'none';
+
+  var systemPrompt = 'You are an expert communication coach trained in the Integral Edge strategic communication framework. Analyze whether a piece of communication answers the three questions that define strategic thinking.\n\nTHE THREE QUESTIONS:\n1. WHAT IS IT? - Does it clearly state what is happening or what the data shows?\n2. IS IT GOOD OR BAD? - Does it interpret the information and say what it means?\n3. WHAT SHOULD WE DO? - Does it include a clear recommendation or next step? This is where strategic thinking lives.\n\nIMPORTANT NUANCES:\n- Warm, relationship-building language is appropriate. Brief pleasantries are fine and professional.\n- Intentional softening language that preserves relationships is appropriate.\n- Only flag hedging that completely avoids making a needed recommendation.\n- The goal is strategic AND warm communication - not robotic directness.\n\nContent type: ' + selectedType + '\nAudience: ' + selectedAudience + '\n\nRespond ONLY with valid JSON, no other text:\n{"overall":0-100,"verdict":"Highly strategic|Mostly strategic|Partially strategic|Reporting not advising|Missing the point of view","summary":"one honest sentence","q1":{"score":0-10,"status":"pass|warn|fail","feedback":"specific feedback referencing actual content","suggestion":"concrete suggestion if score below 8, empty string otherwise"},"q2":{"score":0-10,"status":"pass|warn|fail","feedback":"specific feedback","suggestion":"concrete suggestion if score below 8, empty string otherwise"},"q3":{"score":0-10,"status":"pass|warn|fail","feedback":"specific feedback","suggestion":"concrete suggestion if score below 8, empty string otherwise"},"strategic_rewrite":"Complete rewrite demonstrating all three questions answered, leading with recommendation. Same approximate length. Natural and professional.","habits":["1-3 specific habits spotted, only if genuinely present - can be empty array"]}';
+
+  try {
+    var response = await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-5',
+        max_tokens: 2000,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: 'Analyze this ' + selectedType + ':\n\n' + content }]
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error('Request failed with status ' + response.status);
     }
 
-    var btn = document.getElementById('analyze-btn');
-    btn.disabled = true;
-    btn.textContent = 'Analyzing...';
-    document.getElementById('loading').style.display = 'block';
-    document.getElementById('results').style.display = 'none';
-    document.getElementById('error-box').style.display = 'none';
+    var data = await response.json();
+    var rawText = data.content[0].text.trim().replace(/```json|```/g, '').trim();
+    var result = JSON.parse(rawText);
+    renderResults(result);
 
-    var systemPrompt = 'You are an expert communication coach trained in the Integral Edge strategic communication framework. Analyze whether a piece of communication answers the three questions that define strategic thinking.\n\nTHE THREE QUESTIONS:\n1. WHAT IS IT? — Does it clearly state what is happening or what the data shows?\n2. IS IT GOOD OR BAD? — Does it interpret the information and say what it means?\n3. WHAT SHOULD WE DO? — Does it include a clear recommendation or next step? This is where strategic thinking lives. Most people omit this entirely.\n\nWHAT STRATEGIC MEANS:\n- Lead with question 3 (recommendation), support with 2 (interpretation), provide 1 (data) as backup\n- Tell the audience\'s story, not your own\n- Have a point of view, not just data\n- Replace "here\'s the data" with "here\'s what this means and what I recommend"\n\nIMPORTANT NUANCES:\n- Warm, relationship-building language is appropriate and should not be flagged as a problem\n- Brief pleasantries are fine and professional\n- Intentional softening language that preserves relationships is appropriate\n- Only flag hedging that completely avoids making a recommendation when one is clearly needed\n- The goal is strategic AND warm communication\n\nContent type: ' + selectedType + '\nAudience: ' + selectedAudience + '\n\nRespond ONLY with valid JSON:\n{"overall":0-100,"verdict":"Highly strategic|Mostly strategic|Partially strategic|Reporting, not advising|Missing the point of view","summary":"one honest sentence","q1":{"score":0-10,"status":"pass|warn|fail","feedback":"specific feedback","suggestion":"concrete suggestion if score below 8, empty string otherwise"},"q2":{"score":0-10,"status":"pass|warn|fail","feedback":"specific feedback","suggestion":"concrete suggestion if score below 8, empty string otherwise"},"q3":{"score":0-10,"status":"pass|warn|fail","feedback":"specific feedback","suggestion":"concrete suggestion if score below 8, empty string otherwise"},"strategic_rewrite":"A complete rewrite demonstrating all three questions answered, leading with the recommendation. Keep same approximate length. Sound natural and professional.","habits":["1-3 specific default habits spotted, only if genuinely present"]}';
-
-    try {
-      var response = await fetch(WORKER_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-5',
-          max_tokens: 2000,
-          system: systemPrompt,
-          messages: [{ role: 'user', content: 'Analyze this ' + selectedType + ':\n\n' + content }]
-        })
-      });
-
-      if (!response.ok) throw new Error('Request failed with status ' + response.status);
-
-      var data = await response.json();
-      var text = data.content[0].text.trim().replace(/```json|```/g, '').trim();
-      var result = JSON.parse(text);
-      renderResults(result);
-
-    } catch (err) {
-      showError('Something went wrong: ' + err.message + '. Please try again.');
-    }
-
-    btn.disabled = false;
-    btn.textContent = 'Analyze my communication';
-    document.getElementById('loading').style.display = 'none';
+  } catch (err) {
+    showError('Something went wrong: ' + err.message + '. Please try again.');
   }
 
-  function renderResults(result) {
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('overall-score').textContent = Math.round(result.overall);
-    document.getElementById('score-verdict').textContent = result.verdict;
-    document.getElementById('score-summary').textContent = result.summary;
+  btn.disabled = false;
+  btn.textContent = 'Analyze my communication';
+  document.getElementById('loading').style.display = 'none';
+}
 
-    var qGrid = document.getElementById('three-q-grid');
-    qGrid.innerHTML = '';
-    var questions = [
-      { label: 'What is it?', data: result.q1 },
-      { label: 'Good or bad?', data: result.q2 },
-      { label: 'Now what?', data: result.q3 }
-    ];
-    questions.forEach(function(q) {
-      var score = Math.round(q.data.score);
-      var colorClass = q.data.status === 'pass' ? 'pass' : q.data.status === 'warn' ? 'warn' : 'fail';
-      var card = document.createElement('div');
-      card.className = 'q-card';
-      card.innerHTML = '<div class="q-label">' + q.label + '</div><div class="q-score ' + colorClass + '">' + score + '/10</div><div class="q-status">' + (q.data.status === 'pass' ? 'Answered' : q.data.status === 'warn' ? 'Partial' : 'Missing') + '</div>';
-      qGrid.appendChild(card);
-    });
+function renderResults(result) {
+  document.getElementById('overall-score').textContent = Math.round(result.overall);
+  document.getElementById('score-verdict').textContent = result.verdict;
+  document.getElementById('score-summary').textContent = result.summary;
 
-    ['q1', 'q2', 'q3'].forEach(function(q) {
-      var data = result[q];
-      document.getElementById(q + '-dot').className = 'status-dot ' + (data.status === 'pass' ? 'dot-pass' : data.status === 'warn' ? 'dot-warn' : 'dot-fail');
-      document.getElementById(q + '-feedback').textContent = data.feedback;
-      if (data.suggestion) {
-        document.getElementById(q + '-rewrite').style.display = 'block';
-        document.getElementById(q + '-suggestion').textContent = data.suggestion;
-      } else {
-        document.getElementById(q + '-rewrite').style.display = 'none';
-      }
-    });
+  var qGrid = document.getElementById('three-q-grid');
+  qGrid.innerHTML = '';
+  var qs = [
+    { label: 'What is it?', data: result.q1 },
+    { label: 'Good or bad?', data: result.q2 },
+    { label: 'Now what?', data: result.q3 }
+  ];
+  qs.forEach(function(q) {
+    var score = Math.round(q.data.score);
+    var cls = q.data.status === 'pass' ? 'pass' : q.data.status === 'warn' ? 'warn' : 'fail';
+    var statusText = q.data.status === 'pass' ? 'Answered' : q.data.status === 'warn' ? 'Partial' : 'Missing';
+    var card = document.createElement('div');
+    card.className = 'q-card';
+    card.innerHTML = '<div class="q-label">' + q.label + '</div><div class="q-score ' + cls + '">' + score + '/10</div><div class="q-status">' + statusText + '</div>';
+    qGrid.appendChild(card);
+  });
 
-    document.getElementById('strategic-version').textContent = result.strategic_rewrite;
-
-    if (result.habits && result.habits.length > 0) {
-      document.getElementById('tips-list').innerHTML = result.habits.map(function(h) { return '<li>' + h + '</li>'; }).join('');
-      document.getElementById('tips-card').style.display = 'block';
+  ['q1', 'q2', 'q3'].forEach(function(q) {
+    var d = result[q];
+    var dotEl = document.getElementById(q + '-dot');
+    dotEl.className = 'sdot ' + (d.status === 'pass' ? 'sdot-pass' : d.status === 'warn' ? 'sdot-warn' : 'sdot-fail');
+    document.getElementById(q + '-feedback').textContent = d.feedback;
+    var rewriteEl = document.getElementById(q + '-rewrite');
+    if (d.suggestion && d.suggestion.length > 0) {
+      document.getElementById(q + '-suggestion').textContent = d.suggestion;
+      rewriteEl.style.display = 'block';
     } else {
-      document.getElementById('tips-card').style.display = 'none';
+      rewriteEl.style.display = 'none';
     }
+  });
 
-    document.getElementById('results').style.display = 'block';
-    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  document.getElementById('strategic-version').textContent = result.strategic_rewrite;
+
+  var tipsCard = document.getElementById('tips-card');
+  if (result.habits && result.habits.length > 0) {
+    document.getElementById('tips-list').innerHTML = result.habits.map(function(h) { return '<li>' + h + '</li>'; }).join('');
+    tipsCard.style.display = 'block';
+  } else {
+    tipsCard.style.display = 'none';
   }
 
-  function copyRewrite() {
-    var text = document.getElementById('strategic-version').textContent;
-    navigator.clipboard.writeText(text).then(function() {
-      var btn = document.querySelector('.copy-btn');
-      btn.textContent = 'Copied!';
-      setTimeout(function() { btn.textContent = 'Copy rewrite'; }, 2000);
-    });
-  }
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 
-  function showError(msg) {
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('error-msg').textContent = msg;
-    document.getElementById('error-box').style.display = 'block';
-  }
+function copyRewrite() {
+  var text = document.getElementById('strategic-version').textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = document.querySelector('.copy-btn');
+    var orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = orig; }, 2000);
+  });
+}
 
-  function resetTool() {
-    document.getElementById('content-input').value = '';
-    document.getElementById('char-count').textContent = '0 words';
-    document.getElementById('results').style.display = 'none';
-    document.getElementById('error-box').style.display = 'none';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+function showError(msg) {
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('error-msg').textContent = msg;
+  document.getElementById('error-box').style.display = 'block';
+}
+
+function resetTool() {
+  document.getElementById('content-input').value = '';
+  document.getElementById('char-count').textContent = '0 words';
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('error-box').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 </script>
 </body>
 </html>
