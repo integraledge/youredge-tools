@@ -6,596 +6,139 @@
 <title>Accomplishment Builder — Your Edge</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-    background: #F3F7F0;
-    color: #19323C;
-    min-height: 100vh;
-    padding: 2rem 1rem;
-  }
-
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; background: #F3F7F0; color: #19323C; min-height: 100vh; padding: 2rem 1rem; }
   .container { max-width: 720px; margin: 0 auto; }
-
-  .header {
-    background: #19323C;
-    border-radius: 12px;
-    padding: 1.75rem 2rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .header-top {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 0.5rem;
-  }
-
-  .ie-badge {
-    background: #A93255;
-    color: #fff;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    padding: 3px 10px;
-    border-radius: 20px;
-    text-transform: uppercase;
-  }
-
-  .header h1 {
-    font-size: 22px;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 6px;
-  }
-
-  .header p {
-    font-size: 14px;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.5;
-  }
-
-  .formula-bar {
-    background: rgba(255,255,255,0.08);
-    border-radius: 8px;
-    padding: 10px 14px;
-    margin-top: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .formula-label {
-    font-size: 11px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.5);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    white-space: nowrap;
-  }
-
-  .formula-parts {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-
-  .f-pill {
-    background: rgba(250,207,173,0.15);
-    color: #FACFAD;
-    font-size: 12px;
-    font-weight: 500;
-    padding: 3px 10px;
-    border-radius: 20px;
-  }
-
+  .header { background: #19323C; border-radius: 12px; padding: 1.75rem 2rem; margin-bottom: 1.5rem; }
+  .header-top { display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; }
+  .ie-badge { background: #A93255; color: #fff; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; }
+  .header h1 { font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+  .header p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+  .formula-bar { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 10px 14px; margin-top: 1rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .formula-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
+  .f-pill { background: rgba(250,207,173,0.15); color: #FACFAD; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 20px; }
   .f-arrow { color: rgba(255,255,255,0.3); font-size: 14px; }
-
-  .card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid rgba(25,50,60,0.1);
-  }
-
-  .card label {
-    display: block;
-    font-size: 13px;
-    font-weight: 600;
-    color: #19323C;
-    margin-bottom: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .card .sublabel {
-    font-size: 13px;
-    color: #6B7280;
-    margin-bottom: 10px;
-    line-height: 1.5;
-  }
-
-  .mode-toggle {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 0;
-  }
-
-  .mode-btn {
-    padding: 14px 16px;
-    border-radius: 10px;
-    border: 1.5px solid rgba(25,50,60,0.15);
-    background: #FAFAF8;
-    color: #19323C;
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.15s;
-    text-align: left;
-  }
-
-  .mode-btn.active {
-    border-color: #19323C;
-    background: #19323C;
-    color: #fff;
-  }
-
-  .mode-btn-title {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 3px;
-  }
-
-  .mode-btn-sub {
-    font-size: 12px;
-    opacity: 0.65;
-    line-height: 1.4;
-  }
-
-  .path-toggle {
-    display: flex;
-    gap: 0;
-    margin-bottom: 1.25rem;
-    border: 1.5px solid rgba(25,50,60,0.15);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  .path-btn {
-    flex: 1;
-    padding: 10px 14px;
-    font-size: 13px;
-    font-weight: 500;
-    background: #fff;
-    color: #6B7280;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.15s;
-    text-align: center;
-    line-height: 1.3;
-  }
-
+  .card { background: #fff; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid rgba(25,50,60,0.1); }
+  .card > label { display: block; font-size: 13px; font-weight: 600; color: #19323C; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .sublabel { font-size: 13px; color: #6B7280; margin-bottom: 10px; line-height: 1.5; }
+  .mode-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .mode-btn { padding: 14px 16px; border-radius: 10px; border: 1.5px solid rgba(25,50,60,0.15); background: #FAFAF8; color: #19323C; cursor: pointer; font-family: inherit; transition: all 0.15s; text-align: left; }
+  .mode-btn.active { border-color: #19323C; background: #19323C; color: #fff; }
+  .mode-btn-title { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+  .mode-btn-sub { font-size: 12px; opacity: 0.65; line-height: 1.4; }
+  .path-toggle { display: flex; margin-bottom: 1.25rem; border: 1.5px solid rgba(25,50,60,0.15); border-radius: 8px; overflow: hidden; }
+  .path-btn { flex: 1; padding: 10px 14px; font-size: 13px; font-weight: 500; background: #fff; color: #6B7280; border: none; cursor: pointer; font-family: inherit; transition: all 0.15s; text-align: center; }
   .path-btn:first-child { border-right: 1.5px solid rgba(25,50,60,0.15); }
   .path-btn.active { background: #A93255; color: #fff; }
-
   .path-section { display: none; }
   .path-section.active { display: block; }
-
-  .tracker-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #EAF3DE;
-    border: 1px solid #C0DD97;
-    border-radius: 20px;
-    padding: 4px 12px;
-    font-size: 12px;
-    font-weight: 500;
-    color: #27500A;
-    margin-bottom: 12px;
-  }
-
-  .tracker-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #639922;
-  }
-
-  input[type="text"] {
-    width: 100%;
-    font-size: 14px;
-    padding: 10px 14px;
-    border-radius: 8px;
-    border: 1.5px solid rgba(25,50,60,0.2);
-    background: #FAFAF8;
-    color: #19323C;
-    font-family: inherit;
-    transition: border-color 0.15s;
-    margin-bottom: 1rem;
-  }
-
-  input[type="text"]:focus {
-    outline: none;
-    border-color: #19323C;
-    background: #fff;
-  }
-
-  textarea {
-    width: 100%;
-    font-size: 14px;
-    line-height: 1.7;
-    padding: 12px 14px;
-    border-radius: 8px;
-    border: 1.5px solid rgba(25,50,60,0.2);
-    background: #FAFAF8;
-    color: #19323C;
-    resize: vertical;
-    font-family: inherit;
-    transition: border-color 0.15s;
-    min-height: 90px;
-    margin-bottom: 1rem;
-  }
-
-  textarea:focus {
-    outline: none;
-    border-color: #19323C;
-    background: #fff;
-  }
-
+  .tracker-badge { display: inline-flex; align-items: center; gap: 6px; background: #EAF3DE; border: 1px solid #C0DD97; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 500; color: #27500A; margin-bottom: 12px; }
+  .tracker-dot { width: 6px; height: 6px; border-radius: 50%; background: #639922; }
+  .field-label { display: block; font-size: 12px; font-weight: 600; color: #19323C; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+  input[type="text"] { width: 100%; font-size: 14px; padding: 10px 14px; border-radius: 8px; border: 1.5px solid rgba(25,50,60,0.2); background: #FAFAF8; color: #19323C; font-family: inherit; transition: border-color 0.15s; margin-bottom: 1rem; }
+  input[type="text"]:focus { outline: none; border-color: #19323C; background: #fff; }
+  textarea { width: 100%; font-size: 14px; line-height: 1.7; padding: 12px 14px; border-radius: 8px; border: 1.5px solid rgba(25,50,60,0.2); background: #FAFAF8; color: #19323C; resize: vertical; font-family: inherit; transition: border-color 0.15s; min-height: 90px; margin-bottom: 1rem; }
+  textarea:focus { outline: none; border-color: #19323C; background: #fff; }
   textarea.tall { min-height: 200px; }
-
-  .entry-block {
-    border: 1.5px solid rgba(25,50,60,0.1);
-    border-radius: 10px;
-    padding: 1.25rem;
-    margin-bottom: 1rem;
-    background: #FAFAF8;
-    position: relative;
-  }
-
-  .entry-number {
-    font-size: 11px;
-    font-weight: 600;
-    color: #A93255;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 10px;
-  }
-
-  .remove-entry {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    font-size: 12px;
-    color: #6B7280;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    padding: 4px 8px;
-    border-radius: 4px;
-    transition: all 0.15s;
-  }
-
-  .remove-entry:hover { background: #FCEBEB; color: #791F1F; }
-
-  .add-entry-btn {
-    width: 100%;
-    padding: 10px;
-    font-size: 13px;
-    font-weight: 500;
-    background: transparent;
-    color: #A93255;
-    border: 1.5px dashed rgba(169,50,85,0.3);
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.15s;
-    margin-bottom: 1rem;
-  }
-
-  .add-entry-btn:hover {
-    background: rgba(169,50,85,0.05);
-    border-color: #A93255;
-  }
-
-  .context-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-
-  .context-row select {
-    width: 100%;
-    font-size: 14px;
-    padding: 10px 14px;
-    border-radius: 8px;
-    border: 1.5px solid rgba(25,50,60,0.2);
-    background: #FAFAF8;
-    color: #19323C;
-    font-family: inherit;
-    cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-  }
-
+  .context-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  select { width: 100%; font-size: 14px; padding: 10px 14px; border-radius: 8px; border: 1.5px solid rgba(25,50,60,0.2); background: #FAFAF8; color: #19323C; font-family: inherit; cursor: pointer; }
   select:focus { outline: none; border-color: #19323C; }
-
-  .generate-btn {
-    width: 100%;
-    padding: 14px;
-    font-size: 15px;
-    font-weight: 600;
-    background: #A93255;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: inherit;
-    transition: background 0.15s;
-    margin-bottom: 1.5rem;
-  }
-
+  .entry-block { border: 1.5px solid rgba(25,50,60,0.1); border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; background: #FAFAF8; position: relative; }
+  .entry-num { font-size: 11px; font-weight: 600; color: #A93255; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+  .remove-entry { position: absolute; top: 12px; right: 12px; font-size: 12px; color: #6B7280; background: none; border: none; cursor: pointer; font-family: inherit; padding: 4px 8px; border-radius: 4px; }
+  .remove-entry:hover { background: #FCEBEB; color: #791F1F; }
+  .add-entry-btn { width: 100%; padding: 10px; font-size: 13px; font-weight: 500; background: transparent; color: #A93255; border: 1.5px dashed rgba(169,50,85,0.3); border-radius: 8px; cursor: pointer; font-family: inherit; margin-bottom: 1rem; }
+  .add-entry-btn:hover { background: rgba(169,50,85,0.05); border-color: #A93255; }
+  .generate-btn { width: 100%; padding: 14px; font-size: 15px; font-weight: 600; background: #A93255; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-family: inherit; transition: background 0.15s; margin-bottom: 1.5rem; }
   .generate-btn:hover { background: #8B2847; }
   .generate-btn:disabled { background: #D0D5D0; cursor: not-allowed; }
-
-  .loading {
-    display: none;
-    text-align: center;
-    padding: 2.5rem;
-    background: #fff;
-    border-radius: 12px;
-    border: 1px solid rgba(25,50,60,0.1);
-    margin-bottom: 1rem;
-  }
-
-  .spinner {
-    width: 32px;
-    height: 32px;
-    border: 3px solid rgba(169,50,85,0.2);
-    border-top-color: #A93255;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-    margin: 0 auto;
-  }
-
+  .loading { display: none; text-align: center; padding: 2.5rem; background: #fff; border-radius: 12px; border: 1px solid rgba(25,50,60,0.1); margin-bottom: 1rem; }
+  .spinner { width: 32px; height: 32px; border: 3px solid rgba(169,50,85,0.2); border-top-color: #A93255; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .loading p { font-size: 14px; color: #6B7280; margin-top: 12px; }
-
   .results { display: none; }
-
-  .section-title {
-    font-size: 12px;
-    font-weight: 600;
-    color: #6B7280;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 10px;
-  }
-
-  .output-card {
-    background: #fff;
-    border-radius: 12px;
-    border: 1px solid rgba(25,50,60,0.1);
-    overflow: hidden;
-    margin-bottom: 1rem;
-  }
-
-  .output-header {
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .output-header.self-assess { background: #19323C; }
-  .output-header.resume { background: #A93255; }
-  .output-header.verbal { background: #3A5560; }
-  .output-header.summary { background: #19323C; }
-
-  .output-title {
-    font-size: 13px;
-    font-weight: 600;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .output-use {
-    font-size: 11px;
-    color: rgba(255,255,255,0.6);
-  }
-
-  .copy-btn {
-    font-size: 12px;
-    padding: 5px 12px;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.25);
-    background: transparent;
-    color: rgba(255,255,255,0.8);
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.15s;
-    flex-shrink: 0;
-  }
-
+  .output-card { background: #fff; border-radius: 12px; border: 1px solid rgba(25,50,60,0.1); overflow: hidden; margin-bottom: 1rem; }
+  .output-header { padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
+  .output-title { font-size: 13px; font-weight: 600; color: #fff; text-transform: uppercase; letter-spacing: 0.06em; }
+  .output-use { font-size: 11px; color: rgba(255,255,255,0.6); }
+  .copy-btn { font-size: 12px; padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.25); background: transparent; color: rgba(255,255,255,0.8); cursor: pointer; font-family: inherit; transition: all 0.15s; flex-shrink: 0; }
   .copy-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
-
-  .output-body {
-    padding: 1.25rem;
-  }
-
-  .output-text {
-    font-size: 14px;
-    color: #19323C;
-    line-height: 1.7;
-    white-space: pre-wrap;
-  }
-
-  .output-tip {
-    margin-top: 10px;
-    padding: 8px 12px;
-    background: #F3F7F0;
-    border-radius: 6px;
-    font-size: 12px;
-    color: #3A5560;
-    line-height: 1.5;
-  }
-
-  .accomplishment-group {
-    margin-bottom: 1.5rem;
-  }
-
-  .accomplishment-label {
-    font-size: 12px;
-    font-weight: 600;
-    color: #A93255;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 8px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid rgba(25,50,60,0.08);
-  }
-
-  .error-box {
-    background: #FCEBEB;
-    border-radius: 10px;
-    padding: 14px 16px;
-    border: 1px solid #F09595;
-    margin-bottom: 1rem;
-    display: none;
-  }
-
-  .error-box p { font-size: 13px; color: #791F1F; line-height: 1.5; }
-
-  .reset-btn {
-    width: 100%;
-    padding: 12px;
-    font-size: 14px;
-    font-weight: 500;
-    background: transparent;
-    color: #6B7280;
-    border: 1.5px solid rgba(25,50,60,0.15);
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.15s;
-    margin-top: 0.5rem;
-  }
-
+  .output-body { padding: 1.25rem; }
+  .output-text { font-size: 14px; color: #19323C; line-height: 1.7; white-space: pre-wrap; }
+  .output-tip { margin-top: 10px; padding: 8px 12px; background: #F3F7F0; border-radius: 6px; font-size: 12px; color: #3A5560; line-height: 1.5; }
+  .reset-btn { width: 100%; padding: 12px; font-size: 14px; font-weight: 500; background: transparent; color: #6B7280; border: 1.5px solid rgba(25,50,60,0.15); border-radius: 8px; cursor: pointer; font-family: inherit; transition: all 0.15s; margin-top: 0.5rem; }
   .reset-btn:hover { background: #F3F7F0; color: #19323C; }
-
-  .footer {
-    text-align: center;
-    padding: 1rem 0;
-    font-size: 12px;
-    color: #6B7280;
-  }
-
-  @media (max-width: 480px) {
-    .mode-toggle { grid-template-columns: 1fr; }
-    .context-row { grid-template-columns: 1fr; }
-  }
-
-  
-
+  .error-box { background: #FCEBEB; border-radius: 10px; padding: 14px 16px; border: 1px solid #F09595; margin-bottom: 1rem; display: none; }
+  .error-box p { font-size: 13px; color: #791F1F; line-height: 1.5; }
+  .footer { text-align: center; padding: 1rem 0; font-size: 12px; color: #6B7280; }
+  @media (max-width: 480px) { .mode-toggle { grid-template-columns: 1fr; } .context-row { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
-
-
-
 <div class="container">
 
   <div class="header">
-    <div class="header-top">
-      <span class="ie-badge">Your Edge</span>
-    </div>
+    <div class="header-top"><span class="ie-badge">Your Edge</span></div>
     <h1>Accomplishment Builder</h1>
     <p>Turn your tracker entries or notes into polished accomplishment statements — ready for your self-assessment, resume, or promotion conversation.</p>
     <div class="formula-bar">
       <div class="formula-label">The formula</div>
-      <div class="formula-parts">
-        <span class="f-pill">What I did</span>
-        <span class="f-arrow">→</span>
-        <span class="f-pill">What changed</span>
-        <span class="f-arrow">→</span>
-        <span class="f-pill">What it meant</span>
-      </div>
+      <span class="f-pill">What I did</span>
+      <span class="f-arrow">→</span>
+      <span class="f-pill">What changed</span>
+      <span class="f-arrow">→</span>
+      <span class="f-pill">What it meant</span>
     </div>
   </div>
 
   <div class="card">
     <label>What would you like to do?</label>
     <div class="mode-toggle">
-      <button class="mode-btn active" onclick="switchMode('single')" id="mode-single">
+      <button class="mode-btn active" id="mode-single-btn" onclick="switchMode('single')">
         <div class="mode-btn-title">Polish one accomplishment</div>
         <div class="mode-btn-sub">Get 3 versions — self-assessment, resume, and verbal</div>
       </button>
-      <button class="mode-btn" onclick="switchMode('yearend')" id="mode-yearend">
+      <button class="mode-btn" id="mode-multi-btn" onclick="switchMode('multi')">
         <div class="mode-btn-title">Summarize multiple accomplishments</div>
-        <div class="mode-btn-sub">Summarize multiple wins into a narrative ready for reviews, interviews, or your resume</div>
+        <div class="mode-btn-sub">Build a narrative for reviews, interviews, or your resume</div>
       </button>
     </div>
   </div>
 
+  <!-- SINGLE MODE -->
   <div id="section-single">
     <div class="card">
       <label>Where are your notes coming from?</label>
-      <div class="sublabel">Choose the path that matches where you are — both produce the same great output.</div>
       <div class="path-toggle">
-        <button class="path-btn active" onclick="switchPath('tracker')">From my Your Edge tracker</button>
-        <button class="path-btn" onclick="switchPath('memory')">From memory or other notes</button>
+        <button class="path-btn active" id="single-path-tracker-btn" onclick="switchSinglePath('tracker')">From my Your Edge tracker</button>
+        <button class="path-btn" id="single-path-memory-btn" onclick="switchSinglePath('memory')">From memory or other notes</button>
       </div>
 
-      <div class="path-section active" id="path-tracker">
-        <div class="tracker-badge">
-          <div class="tracker-dot"></div>
-          Copy directly from your Friday reflection entries
-        </div>
-
-        <label>Focus area</label>
+      <div class="path-section active" id="single-path-tracker">
+        <div class="tracker-badge"><div class="tracker-dot"></div>Copy directly from your Friday reflection entries</div>
+        <label class="field-label">Focus area</label>
         <input type="text" id="t-focus" placeholder="e.g. Be More Strategic, Communicate More Clearly">
-
-        <label>What happened this week?</label>
-        <div class="sublabel">Paste your Friday "what happened" entry here.</div>
-        <textarea id="t-happened" placeholder="e.g. Presented Q3 results to CFO. Led with recommendation instead of walking through methodology. CFO engaged immediately and asked fewer clarifying questions."></textarea>
-
-        <label>How did I follow through?</label>
-        <div class="sublabel">Paste your Friday "how I followed through" entry.</div>
-        <textarea id="t-followthrough" placeholder="e.g. Yes — I prepared my recommendation before the meeting and opened with it, resisting the urge to walk through all the data first."></textarea>
-
-        <label>What was the result?</label>
-        <div class="sublabel">Paste your Friday "result" entry. Use the formula: what I did, what changed, what it meant.</div>
-        <textarea id="t-result" placeholder="e.g. Meeting ran 15 minutes shorter than usual. CFO approved the Q3 budget recommendation without revisions — first time that's happened this year."></textarea>
+        <label class="field-label">What happened this week?</label>
+        <textarea id="t-happened" placeholder="e.g. Presented Q3 results to CFO. Led with recommendation instead of walking through methodology."></textarea>
+        <label class="field-label">How did I follow through?</label>
+        <textarea id="t-followthrough" placeholder="e.g. Yes — I prepared my recommendation before the meeting and opened with it."></textarea>
+        <label class="field-label">What was the result?</label>
+        <textarea id="t-result" placeholder="e.g. Meeting ran 15 minutes shorter. CFO approved the Q3 budget recommendation without revisions."></textarea>
       </div>
 
-      <div class="path-section" id="path-memory">
-        <label>What did you work on?</label>
-        <div class="sublabel">Describe the project, situation, or skill you were developing. Be specific.</div>
-        <textarea id="m-context" placeholder="e.g. I was presenting quarterly results to senior leadership and trying to shift how I communicate — leading with recommendations instead of walking through all the data."></textarea>
-
-        <label>What did you actually do?</label>
-        <div class="sublabel">The specific action you took. What was different about how you showed up?</div>
+      <div class="path-section" id="single-path-memory">
+        <label class="field-label">What did you work on?</label>
+        <textarea id="m-context" placeholder="e.g. I was presenting quarterly results to senior leadership and trying to lead with recommendations instead of walking through all the data."></textarea>
+        <label class="field-label">What did you actually do?</label>
         <textarea id="m-action" placeholder="e.g. I opened the meeting with my recommendation upfront, before any data, and used the analysis as backup when questions came up."></textarea>
-
-        <label>What happened as a result?</label>
-        <div class="sublabel">Any outcomes, reactions, feedback, or signals — even small ones count.</div>
-        <textarea id="m-result" placeholder="e.g. The CFO approved the recommendation without revisions. The meeting was shorter than usual. My manager told me afterward it was the best presentation I'd given."></textarea>
+        <label class="field-label">What happened as a result?</label>
+        <textarea id="m-result" placeholder="e.g. The CFO approved the recommendation without revisions. The meeting was shorter than usual."></textarea>
       </div>
     </div>
 
     <div class="card">
       <div class="context-row">
         <div>
-          <label>Your role / level</label>
+          <label class="field-label">Your role / level</label>
           <select id="role-level">
             <option value="analyst or early career professional">Analyst / early career</option>
             <option value="senior analyst or specialist" selected>Senior analyst / specialist</option>
@@ -604,7 +147,7 @@
           </select>
         </div>
         <div>
-          <label>Primary goal</label>
+          <label class="field-label">Primary goal</label>
           <select id="primary-goal">
             <option value="year-end self-assessment">Year-end self-assessment</option>
             <option value="promotion conversation">Promotion conversation</option>
@@ -619,38 +162,33 @@
     <button class="generate-btn" id="single-btn" onclick="runSingle()">Build my accomplishment statements</button>
   </div>
 
-  <div id="section-yearend" style="display:none;">
+  <!-- MULTI MODE -->
+  <div id="section-multi" style="display:none;">
     <div class="card">
       <label>Where are your notes coming from?</label>
-      <div class="sublabel">Choose the path that matches where you are.</div>
       <div class="path-toggle">
-        <button class="path-btn active" onclick="switchYEPath('tracker')">From my Your Edge tracker</button>
-        <button class="path-btn" onclick="switchYEPath('memory')">From memory or other notes</button>
+        <button class="path-btn active" id="multi-path-tracker-btn" onclick="switchMultiPath('tracker')">From my Your Edge tracker</button>
+        <button class="path-btn" id="multi-path-memory-btn" onclick="switchMultiPath('memory')">From memory or other notes</button>
       </div>
 
-      <div class="path-section active" id="ye-path-tracker">
-        <div class="tracker-badge">
-          <div class="tracker-dot"></div>
-          Add your strongest flagged entries — aim for 3 to 6 wins
-        </div>
-
+      <div class="path-section active" id="multi-path-tracker">
+        <div class="tracker-badge"><div class="tracker-dot"></div>Add your strongest flagged entries — aim for 3 to 6</div>
         <div id="entries-container"></div>
-
         <button class="add-entry-btn" onclick="addEntry()">+ Add another accomplishment</button>
       </div>
 
-      <div class="path-section" id="ye-path-memory">
-        <label>Describe your key accomplishments this year</label>
-        <div class="sublabel">List your 3-6 strongest contributions. For each one, describe what you did, what changed, and what it meant. Separate them with a blank line.</div>
-        <textarea class="tall" id="ye-memory-input" placeholder="Accomplishment 1:&#10;I shifted how I present data to senior leadership, leading with recommendations instead of methodology. This resulted in faster decisions and my Q3 budget recommendation being approved without revisions for the first time.&#10;&#10;Accomplishment 2:&#10;I took on managing a second direct report mid-year and implemented a consistent 1:1 structure. Both team members hit their project deadlines and one was recognized in a company-wide meeting.&#10;&#10;[Continue with your remaining accomplishments...]"></textarea>
+      <div class="path-section" id="multi-path-memory">
+        <label class="field-label">Describe your key accomplishments</label>
+        <p class="sublabel">List your 3-6 strongest contributions. For each one describe what you did, what changed, and what it meant. Separate them with a blank line.</p>
+        <textarea class="tall" id="multi-memory-input" placeholder="Accomplishment 1:&#10;I shifted how I present data to senior leadership, leading with recommendations. This resulted in faster decisions and my Q3 budget being approved without revisions.&#10;&#10;Accomplishment 2:&#10;..."></textarea>
       </div>
     </div>
 
     <div class="card">
       <div class="context-row">
         <div>
-          <label>Your role / level</label>
-          <select id="ye-role-level">
+          <label class="field-label">Your role / level</label>
+          <select id="multi-role">
             <option value="analyst or early career professional">Analyst / early career</option>
             <option value="senior analyst or specialist" selected>Senior analyst / specialist</option>
             <option value="manager or team lead">Manager / team lead</option>
@@ -658,8 +196,8 @@
           </select>
         </div>
         <div>
-          <label>Primary goal</label>
-          <select id="ye-primary-goal">
+          <label class="field-label">Primary goal</label>
+          <select id="multi-goal">
             <option value="year-end performance review">Year-end performance review</option>
             <option value="promotion conversation">Promotion conversation</option>
             <option value="mid-year review">Mid-year review</option>
@@ -668,15 +206,14 @@
           </select>
         </div>
       </div>
-
-      <div style="margin-top: 1rem;">
-        <label>Anything you want to emphasize? (optional)</label>
-        <div class="sublabel">A theme, a skill, a specific role you're going for — the tool will weave it in.</div>
-        <input type="text" id="ye-emphasis" placeholder="e.g. Ready for director-level responsibilities, strong in cross-functional leadership" style="margin-bottom:0;">
+      <div style="margin-top:1rem;">
+        <label class="field-label">Anything to emphasize? (optional)</label>
+        <p class="sublabel">A theme, skill, or role you're going for — the tool will weave it in.</p>
+        <input type="text" id="multi-emphasis" placeholder="e.g. Ready for director-level responsibilities, strong in cross-functional leadership" style="margin-bottom:0;">
       </div>
     </div>
 
-    <button class="generate-btn" id="yearend-btn" onclick="runYearEnd()">Summarize my accomplishments</button>
+    <button class="generate-btn" id="multi-btn" onclick="runMulti()">Summarize my accomplishments</button>
   </div>
 
   <div class="loading" id="loading">
@@ -685,474 +222,262 @@
   </div>
 
   <div class="error-box" id="error-box">
-    <p id="error-msg">Something went wrong. Please check your API key and try again.</p>
+    <p id="error-msg">Something went wrong. Please try again.</p>
   </div>
 
   <div class="results" id="results"></div>
 
-  <div class="footer">
-    Powered by Your Edge &mdash; Integral Edge Consulting
-  </div>
-
+  <div class="footer">Powered by Your Edge &mdash; Integral Edge Consulting</div>
 </div>
 
 <script>
+var WORKER_URL = 'https://your-edge.mandy-738.workers.dev';
+var currentMode = 'single';
+var currentSinglePath = 'tracker';
+var currentMultiPath = 'tracker';
+var entryCount = 0;
 
-      SESSION_API_KEY = val;
-    document.getElementById('key-overlay').style.display = 'none';
+function switchMode(mode) {
+  currentMode = mode;
+  document.getElementById('mode-single-btn').classList.toggle('active', mode === 'single');
+  document.getElementById('mode-multi-btn').classList.toggle('active', mode === 'multi');
+  document.getElementById('section-single').style.display = mode === 'single' ? 'block' : 'none';
+  document.getElementById('section-multi').style.display = mode === 'multi' ? 'block' : 'none';
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('error-box').style.display = 'none';
+  if (mode === 'multi' && entryCount === 0) { addEntry(); }
+}
+
+function switchSinglePath(path) {
+  currentSinglePath = path;
+  document.getElementById('single-path-tracker-btn').classList.toggle('active', path === 'tracker');
+  document.getElementById('single-path-memory-btn').classList.toggle('active', path === 'memory');
+  document.getElementById('single-path-tracker').classList.toggle('active', path === 'tracker');
+  document.getElementById('single-path-memory').classList.toggle('active', path === 'memory');
+}
+
+function switchMultiPath(path) {
+  currentMultiPath = path;
+  document.getElementById('multi-path-tracker-btn').classList.toggle('active', path === 'tracker');
+  document.getElementById('multi-path-memory-btn').classList.toggle('active', path === 'memory');
+  document.getElementById('multi-path-tracker').classList.toggle('active', path === 'tracker');
+  document.getElementById('multi-path-memory').classList.toggle('active', path === 'memory');
+}
+
+function addEntry() {
+  entryCount++;
+  var num = entryCount;
+  var container = document.getElementById('entries-container');
+  var block = document.createElement('div');
+  block.className = 'entry-block';
+  block.id = 'entry-' + num;
+  block.innerHTML =
+    '<div class="entry-num">Accomplishment ' + num + '</div>' +
+    (num > 1 ? '<button class="remove-entry" onclick="removeEntry(' + num + ')">Remove</button>' : '') +
+    '<label class="field-label" style="margin-top:0;">Focus area</label>' +
+    '<input type="text" id="e' + num + '-focus" placeholder="e.g. Be More Strategic" style="margin-bottom:8px;">' +
+    '<label class="field-label">What happened + how I followed through</label>' +
+    '<textarea id="e' + num + '-what" placeholder="Paste your tracker entries here..." style="min-height:80px;margin-bottom:8px;"></textarea>' +
+    '<label class="field-label">What was the result?</label>' +
+    '<textarea id="e' + num + '-result" placeholder="What changed? What did it mean?" style="min-height:70px;margin-bottom:0;"></textarea>';
+  container.appendChild(block);
+}
+
+function removeEntry(num) {
+  var el = document.getElementById('entry-' + num);
+  if (el) { el.remove(); }
+}
+
+async function runSingle() {
+  var content = '';
+  if (currentSinglePath === 'tracker') {
+    var happened = document.getElementById('t-happened').value.trim();
+    var result = document.getElementById('t-result').value.trim();
+    if (!happened && !result) { alert('Please fill in at least what happened and what the result was.'); return; }
+    var focus = document.getElementById('t-focus').value.trim();
+    var followthrough = document.getElementById('t-followthrough').value.trim();
+    if (focus) content += 'Focus area: ' + focus + '\n';
+    if (happened) content += 'What happened: ' + happened + '\n';
+    if (followthrough) content += 'How I followed through: ' + followthrough + '\n';
+    if (result) content += 'Result: ' + result;
+  } else {
+    var action = document.getElementById('m-action').value.trim();
+    var mresult = document.getElementById('m-result').value.trim();
+    if (!action && !mresult) { alert('Please fill in at least what you did and what the result was.'); return; }
+    var ctx = document.getElementById('m-context').value.trim();
+    if (ctx) content += 'Context: ' + ctx + '\n';
+    if (action) content += 'What I did: ' + action + '\n';
+    if (mresult) content += 'Result: ' + mresult;
   }
 
-  document.getElementById('api-key-input').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') submitKey();
+  var role = document.getElementById('role-level').value;
+  var goal = document.getElementById('primary-goal').value;
+  await generate('single', content, role, goal, '');
+}
+
+async function runMulti() {
+  var content = '';
+  if (currentMultiPath === 'tracker') {
+    var blocks = document.querySelectorAll('.entry-block');
+    var hasContent = false;
+    blocks.forEach(function(block, i) {
+      var num = i + 1;
+      var focusEl = document.getElementById('e' + num + '-focus');
+      var whatEl = document.getElementById('e' + num + '-what');
+      var resultEl = document.getElementById('e' + num + '-result');
+      var focus = focusEl ? focusEl.value.trim() : '';
+      var what = whatEl ? whatEl.value.trim() : '';
+      var res = resultEl ? resultEl.value.trim() : '';
+      if (what || res) {
+        hasContent = true;
+        content += '\n--- Accomplishment ' + (i+1) + ' ---\n';
+        if (focus) content += 'Focus: ' + focus + '\n';
+        if (what) content += 'What happened: ' + what + '\n';
+        if (res) content += 'Result: ' + res + '\n';
+      }
+    });
+    if (!hasContent) { alert('Please add at least one accomplishment entry before generating.'); return; }
+  } else {
+    content = document.getElementById('multi-memory-input').value.trim();
+    if (!content) { alert('Please describe your accomplishments before generating.'); return; }
+  }
+
+  var role = document.getElementById('multi-role').value;
+  var goal = document.getElementById('multi-goal').value;
+  var emphasis = document.getElementById('multi-emphasis').value.trim();
+  await generate('multi', content, role, goal, emphasis);
+}
+
+async function generate(mode, content, role, goal, emphasis) {
+  var btnId = mode === 'single' ? 'single-btn' : 'multi-btn';
+  var btn = document.getElementById(btnId);
+  btn.disabled = true;
+  btn.textContent = mode === 'single' ? 'Building...' : 'Summarizing...';
+
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('error-box').style.display = 'none';
+  document.getElementById('loading-text').textContent = mode === 'single'
+    ? 'Applying the impact formula to your accomplishment...'
+    : 'Synthesizing your accomplishments...';
+
+  var systemPrompt = mode === 'single' ? buildSinglePrompt(role, goal) : buildMultiPrompt(role, goal, emphasis);
+  var userMsg = mode === 'single'
+    ? 'Build accomplishment statements from these notes:\n\n' + content
+    : 'Build a summary from these accomplishments:\n\n' + content;
+
+  try {
+    var response = await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-5',
+        max_tokens: 2000,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userMsg }]
+      })
+    });
+
+    if (!response.ok) { throw new Error('Request failed with status ' + response.status); }
+
+    var data = await response.json();
+    var rawText = data.content[0].text.trim().replace(/```json|```/g, '').trim();
+    var result = JSON.parse(rawText);
+    mode === 'single' ? renderSingle(result) : renderMulti(result);
+
+  } catch (err) {
+    showError('Something went wrong: ' + err.message + '. Please try again.');
+  }
+
+  btn.disabled = false;
+  btn.textContent = mode === 'single' ? 'Build my accomplishment statements' : 'Summarize my accomplishments';
+  document.getElementById('loading').style.display = 'none';
+}
+
+function buildSinglePrompt(role, goal) {
+  return 'You are an expert career coach. Transform raw notes into polished accomplishment statements using the impact formula: What I did -> What changed -> What it meant.\n\nRole: ' + role + '\nGoal: ' + goal + '\n\nProduce THREE versions:\n1. SELF-ASSESSMENT: 2-4 sentences, professional, past tense, shows growth and impact for a written performance review.\n2. RESUME BULLET: One punchy bullet starting with strong action verb. Includes specific outcome or metric if mentioned. 10-20 words. No pronouns.\n3. VERBAL: 3-5 sentences written to be SPOKEN in a promotion or interview conversation. First person. Conversational but confident.\n\nRules:\n- Be specific - use language from the input\n- Use metrics if mentioned\n- Match language to role level\n- The verbal version should sound like a real person talking, not a resume read aloud\n\nRespond ONLY with valid JSON:\n{"self_assessment":"text","self_assessment_tip":"one short tip","resume_bullet":"bullet text","resume_tip":"one short tip","verbal":"text written to be spoken","verbal_tip":"one short tip","impact_note":"one sentence on what makes this accomplishment compelling"}';
+}
+
+function buildMultiPrompt(role, goal, emphasis) {
+  return 'You are an expert career coach. Synthesize multiple accomplishments into a cohesive narrative using the impact formula: What I did -> What changed -> What it meant.\n\nRole: ' + role + '\nGoal: ' + goal + (emphasis ? '\nEmphasize: ' + emphasis : '') + '\n\nProduce four outputs for goal "' + goal + '":\n1. OPENING STATEMENT: 3-4 confident first-person sentences that open the conversation. What did I focus on and what was the impact?\n2. ACCOMPLISHMENT BULLETS: One bullet per accomplishment, strong action verb, specific outcome.\n3. GROWTH/SKILLS NARRATIVE: 3-4 sentences on growth, development, or skills demonstrated.\n4. VERBAL SUMMARY: 4-6 sentences to be spoken. Conversational, confident, first person.\n\nAlso provide:\n- theme: one sentence naming the through-line of these accomplishments\n- output_labels: 4 short labels appropriate for the goal\n- output_uses: 4 short descriptions of when to use each\n\nRespond ONLY with valid JSON:\n{"theme":"text","output1":"text","output2_bullets":["bullet1","bullet2"],"output3":"text","output4":"text","output_labels":["label1","label2","label3","label4"],"output_uses":["use1","use2","use3","use4"]}';
+}
+
+function renderSingle(result) {
+  var colors = ['#19323C', '#A93255', '#3A5560'];
+  var sections = [
+    { title: 'Self-assessment version', use: 'For written performance reviews and self-evaluations', text: result.self_assessment, tip: result.self_assessment_tip, color: colors[0] },
+    { title: 'Resume bullet', use: 'For your resume, LinkedIn, or promotion materials', text: result.resume_bullet, tip: result.resume_tip, color: colors[1] },
+    { title: 'Verbal version', use: 'For promotion or interview conversations — say this out loud', text: result.verbal, tip: result.verbal_tip, color: colors[2] }
+  ];
+
+  var html = '';
+  sections.forEach(function(s, i) {
+    var safeText = (s.text || '').replace(/`/g, '\\`');
+    html += '<div class="output-card"><div class="output-header" style="background:' + s.color + ';"><div><div class="output-title">' + s.title + '</div><div class="output-use">' + s.use + '</div></div><button class="copy-btn" onclick="copyText(this,\'' + safeText.replace(/'/g, "\\'") + '\')">Copy</button></div><div class="output-body"><div class="output-text">' + (s.text || '') + '</div>' + (s.tip ? '<div class="output-tip">' + s.tip + '</div>' : '') + '</div></div>';
   });
 
-  // API calls route through secure Cloudflare Worker
+  if (result.impact_note) {
+    html += '<div class="output-card" style="border-color:rgba(169,50,85,0.2);"><div class="output-body" style="background:#fdf8f9;border-radius:12px;"><div style="font-size:11px;font-weight:600;color:#A93255;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">What makes this compelling</div><div style="font-size:14px;color:#19323C;line-height:1.6;">' + result.impact_note + '</div></div></div>';
+  }
 
-  let currentMode = 'single';
-  let currentPath = 'tracker';
-  let currentYEPath = 'tracker';
-  let entryCount = 1;
+  html += '<button class="reset-btn" onclick="resetTool()">Build another accomplishment</button>';
+  var el = document.getElementById('results');
+  el.innerHTML = html;
+  el.style.display = 'block';
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 
-  function switchMode(mode) {
-    currentMode = mode;
-    document.getElementById('mode-single').classList.toggle('active', mode === 'single');
-    document.getElementById('mode-yearend').classList.toggle('active', mode === 'yearend');
-    document.getElementById('section-single').style.display = mode === 'single' ? 'block' : 'none';
-    document.getElementById('section-yearend').style.display = mode === 'yearend' ? 'block' : 'none';
-    document.getElementById('results').style.display = 'none';
-    document.getElementById('error-box').style.display = 'none';
-    if (mode === 'yearend' && document.getElementById('entries-container').children.length === 0) {
-      addEntry();
+function renderMulti(result) {
+  var labels = result.output_labels || ['Opening statement', 'Accomplishment bullets', 'Narrative', 'Verbal summary'];
+  var uses = result.output_uses || ['', '', '', 'Say this out loud'];
+  var colors = ['#19323C', '#A93255', '#3A5560', '#3A5560'];
+
+  var bullets = (result.output2_bullets || []).map(function(b) {
+    return '<div style="display:flex;gap:8px;margin-bottom:6px;"><span style="color:#A93255;flex-shrink:0;">→</span><span>' + b + '</span></div>';
+  }).join('');
+
+  var html = '';
+
+  if (result.theme) {
+    html += '<div style="background:#FAEEDA;border-radius:10px;padding:12px 16px;margin-bottom:1rem;border:1px solid #FAC775;"><div style="font-size:12px;font-weight:600;color:#633806;margin-bottom:4px;">The through-line of your accomplishments</div><div style="font-size:14px;color:#412402;line-height:1.6;">' + result.theme + '</div></div>';
+  }
+
+  [result.output1, null, result.output3, result.output4].forEach(function(output, i) {
+    if (i === 1) {
+      var safeBullets = (result.output2_bullets || []).join('\n').replace(/'/g, "\\'");
+      html += '<div class="output-card"><div class="output-header" style="background:' + colors[i] + ';"><div><div class="output-title">' + labels[i] + '</div><div class="output-use">' + uses[i] + '</div></div><button class="copy-btn" onclick="copyText(this,\'' + safeBullets + '\')">Copy all</button></div><div class="output-body"><div style="font-size:14px;color:#19323C;line-height:1.7;">' + bullets + '</div></div></div>';
+    } else if (output) {
+      var safeOut = output.replace(/'/g, "\\'");
+      html += '<div class="output-card"><div class="output-header" style="background:' + colors[i] + ';"><div><div class="output-title">' + labels[i] + '</div><div class="output-use">' + uses[i] + '</div></div><button class="copy-btn" onclick="copyText(this,\'' + safeOut + '\')">Copy</button></div><div class="output-body"><div class="output-text">' + output + '</div></div></div>';
     }
-  }
-
-  function switchPath(path) {
-    currentPath = path;
-    document.querySelectorAll('#section-single .path-btn').forEach((btn, i) => {
-      btn.classList.toggle('active', (i === 0 && path === 'tracker') || (i === 1 && path === 'memory'));
-    });
-    document.getElementById('path-tracker').classList.toggle('active', path === 'tracker');
-    document.getElementById('path-memory').classList.toggle('active', path === 'memory');
-  }
-
-  function switchYEPath(path) {
-    currentYEPath = path;
-    document.querySelectorAll('#section-yearend .path-btn').forEach((btn, i) => {
-      btn.classList.toggle('active', (i === 0 && path === 'tracker') || (i === 1 && path === 'memory'));
-    });
-    document.getElementById('ye-path-tracker').classList.toggle('active', path === 'tracker');
-    document.getElementById('ye-path-memory').classList.toggle('active', path === 'memory');
-  }
-
-  function addEntry() {
-    const container = document.getElementById('entries-container');
-    const num = container.children.length + 1;
-    const block = document.createElement('div');
-    block.className = 'entry-block';
-    block.id = 'entry-' + num;
-    block.innerHTML = `
-      <div class="entry-number">Accomplishment ${num}</div>
-      ${num > 1 ? `<button class="remove-entry" onclick="removeEntry(${num})">Remove</button>` : ''}
-      <label style="font-size:12px;text-transform:none;letter-spacing:0;color:#6B7280;margin-bottom:4px;font-weight:400;">Focus area</label>
-      <input type="text" placeholder="e.g. Be More Strategic" style="margin-bottom:8px;" id="e${num}-focus">
-      <label style="font-size:12px;text-transform:none;letter-spacing:0;color:#6B7280;margin-bottom:4px;font-weight:400;">What happened + how I followed through</label>
-      <textarea placeholder="Paste your tracker entries here — what happened, how you followed through..." style="min-height:80px;margin-bottom:8px;" id="e${num}-what"></textarea>
-      <label style="font-size:12px;text-transform:none;letter-spacing:0;color:#6B7280;margin-bottom:4px;font-weight:400;">What was the result?</label>
-      <textarea placeholder="What changed? What did it mean for the business or team?" style="min-height:70px;margin-bottom:0;" id="e${num}-result"></textarea>
-    `;
-    container.appendChild(block);
-    entryCount = num;
-  }
-
-  function removeEntry(num) {
-    const el = document.getElementById('entry-' + num);
-    if (el) el.remove();
-    renumberEntries();
-  }
-
-  function renumberEntries() {
-    const blocks = document.querySelectorAll('.entry-block');
-    blocks.forEach((block, i) => {
-      const num = i + 1;
-      block.querySelector('.entry-number').textContent = 'Accomplishment ' + num;
-    });
-  }
-
-  async function runSingle() {
-    let content = '';
-
-    if (currentPath === 'tracker') {
-      const focus = document.getElementById('t-focus').value.trim();
-      const happened = document.getElementById('t-happened').value.trim();
-      const followthrough = document.getElementById('t-followthrough').value.trim();
-      const result = document.getElementById('t-result').value.trim();
-
-      if (!happened && !result) {
-        alert('Please fill in at least what happened and what the result was.');
-        return;
-      }
-
-      content = `Source: Your Edge tracker entries\n`;
-      if (focus) content += `Focus area: ${focus}\n`;
-      content += `What happened: ${happened}\n`;
-      if (followthrough) content += `How I followed through: ${followthrough}\n`;
-      content += `Result: ${result}`;
-    } else {
-      const context = document.getElementById('m-context').value.trim();
-      const action = document.getElementById('m-action').value.trim();
-      const result = document.getElementById('m-result').value.trim();
-
-      if (!action && !result) {
-        alert('Please fill in at least what you did and what the result was.');
-        return;
-      }
-
-      content = `Source: Personal notes\n`;
-      if (context) content += `Context / situation: ${context}\n`;
-      if (action) content += `What I did: ${action}\n`;
-      if (result) content += `Result: ${result}`;
-    }
-
-    const role = document.getElementById('role-level').value;
-    const goal = document.getElementById('primary-goal').value;
-
-    await generate('single', content, role, goal, '');
-  }
-
-  async function runYearEnd() {
-    let content = '';
-
-    if (currentYEPath === 'tracker') {
-      const blocks = document.querySelectorAll('.entry-block');
-      let hasContent = false;
-      blocks.forEach((block, i) => {
-        const num = i + 1;
-        const focus = document.getElementById(`e${num}-focus`)?.value.trim() || '';
-        const what = document.getElementById(`e${num}-what`)?.value.trim() || '';
-        const result = document.getElementById(`e${num}-result`)?.value.trim() || '';
-        if (what || result) {
-          hasContent = true;
-          content += `\n--- Accomplishment ${num} ---\n`;
-          if (focus) content += `Focus area: ${focus}\n`;
-          if (what) content += `What happened / follow through: ${what}\n`;
-          if (result) content += `Result: ${result}\n`;
-        }
-      });
-      if (!hasContent) {
-        alert('Please add at least one accomplishment entry before generating.');
-        return;
-      }
-    } else {
-      content = document.getElementById('ye-memory-input').value.trim();
-      if (!content) {
-        alert('Please describe your accomplishments before generating.');
-        return;
-      }
-    }
-
-    const role = document.getElementById('ye-role-level').value;
-    const goal = document.getElementById('ye-primary-goal').value;
-    const emphasis = document.getElementById('ye-emphasis').value.trim();
-
-    await generate('yearend', content, role, goal, emphasis);
-  }
-
-  async function generate(mode, content, role, goal, emphasis) {
-    
-
-    const btn = document.getElementById(mode === 'single' ? 'single-btn' : 'yearend-btn');
-    btn.disabled = true;
-    btn.textContent = mode === 'single' ? 'Building...' : 'Summarizing...';
-
-    document.getElementById('loading').style.display = 'block';
-    document.getElementById('results').style.display = 'none';
-    document.getElementById('error-box').style.display = 'none';
-    document.getElementById('loading-text').textContent = mode === 'single'
-      ? 'Applying the impact formula to your accomplishment...'
-      : 'Synthesizing your accomplishments...';
-
-    const systemPrompt = mode === 'single' ? buildSinglePrompt(role, goal) : buildYearEndPrompt(role, goal, emphasis);
-    const userContent = mode === 'single'
-      ? `Please build accomplishment statements from these notes:\n\n${content}`
-      : `Please build a year-end summary from these accomplishments:\n\n${content}`;
-
-    try {
-      const response = await fetch('https://your-edge.mandy-738.workers.dev', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          
-          
-          'anthropic-dangerous-direct-browser-access': 'true'
-        },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-5',
-          max_tokens: 2000,
-          system: systemPrompt,
-          messages: [{ role: 'user', content: userContent }]
-        })
-      });
-
-      if (!response.ok) {
-        const errData = await response.json();
-        throw new Error(errData.error?.message || 'API error ' + response.status);
-      }
-
-      const data = await response.json();
-      const text = data.content[0].text.trim().replace(/```json|```/g, '').trim();
-      const result = JSON.parse(text);
-
-      mode === 'single' ? renderSingle(result) : renderYearEnd(result);
-
-    } catch (err) {
-      showError('Something went wrong: ' + err.message);
-    }
-
-    btn.disabled = false;
-    btn.textContent = mode === 'single' ? 'Build my accomplishment statements' : 'Summarize my accomplishments';
-    document.getElementById('loading').style.display = 'none';
-  }
-
-  function buildSinglePrompt(role, goal) {
-    return `You are an expert career coach trained in the Integral Edge accomplishment framework. Your job is to transform raw notes, tracker entries, or reflections into polished accomplishment statements that demonstrate real impact.
-
-THE IMPACT FORMULA:
-What I did → What changed → What it meant
-Every accomplishment statement must answer all three. The "what it meant" part is what most people miss — it's the business or team impact, not just the personal action.
-
-THE PERSON:
-Role/level: ${role}
-Primary goal: ${goal}
-
-YOUR JOB:
-Take the raw input and produce THREE versions of the same accomplishment — each formatted differently for a specific context:
-
-1. SELF-ASSESSMENT VERSION: 2-4 sentences. Professional but personal. Past tense. Shows growth and impact. Appropriate for a written performance review where they're describing their own contributions. Should sound like them, not like a press release.
-
-2. RESUME BULLET: One punchy bullet point. Starts with a strong action verb. Includes a specific outcome or metric if one is mentioned or can be reasonably inferred. Format: "Action verb + what + result/impact." No pronouns ("I" or "they"). 10-20 words ideal.
-
-3. VERBAL VERSION: 3-5 sentences written to be SPOKEN, not read. Uses first person. Conversational but confident. This is what they'd say in a promotion conversation or job interview when asked "tell me about an accomplishment you're proud of." Should have a natural arc: situation → what I did → result → what I learned or what it showed about my capabilities.
-
-IMPORTANT RULES:
-- Be specific — use language from the input, don't genericize
-- If a metric is mentioned (time saved, budget approved, meeting shorter), use it — metrics make accomplishments credible
-- If no metric is mentioned, focus on behavioral impact (perception shifted, fewer questions, faster decisions, recognized by senior leader)
-- Don't exaggerate or invent outcomes not in the input
-- Match language to the role level — analyst language is different from director language
-- The verbal version should NOT sound like a resume bullet read aloud — it should sound like a real person talking
-
-Respond ONLY with valid JSON, no other text:
-{
-  "self_assessment": "the self-assessment version",
-  "self_assessment_tip": "one short tip for how to use or strengthen this version in a real review",
-  "resume_bullet": "the resume bullet starting with action verb",
-  "resume_tip": "one short tip for the resume context",
-  "verbal": "the verbal version written to be spoken",
-  "verbal_tip": "one short tip for delivering this in a real conversation",
-  "impact_note": "one sentence calling out the strongest impact element in their input — what makes this accomplishment compelling"
-}`;
-  }
-
-  function buildYearEndPrompt(role, goal, emphasis) {
-    return `You are an expert career coach trained in the Integral Edge accomplishment framework. Your job is to synthesize multiple accomplishments into a cohesive year-end narrative that tells the story of someone's growth and impact.
-
-THE IMPACT FORMULA (applied throughout):
-What I did → What changed → What it meant
-
-THE PERSON:
-Role/level: ${role}
-Primary goal: ${goal}
-${emphasis ? `They want to emphasize: ${emphasis}` : ''}
-
-YOUR JOB:
-Take multiple accomplishments and produce:
-
-1. YEAR-END OPENING STATEMENT: 3-4 sentences that open the performance review conversation. Confident, first-person, sets the theme of the year. Should answer: what did I focus on this year and what was the impact? This is what they say when their manager asks "so how do you think your year went?"
-
-2. POLISHED ACCOMPLISHMENT BULLETS (one per accomplishment provided): Each bullet starts with a strong action verb, includes the outcome, and is written for a self-assessment form. 1-2 sentences each.
-
-3. GROWTH NARRATIVE: 3-4 sentences describing how they grew this year. What did they do differently? What shifted in how they show up? This is the "development" section of most performance reviews.
-
-4. VERBAL SUMMARY: 4-6 sentences to be spoken in a performance review or promotion conversation. Conversational, confident, first person. Opens with a theme, hits the strongest 2-3 accomplishments, closes with where they're headed.
-
-RULES:
-- Find the theme or through-line across the accomplishments — what do they add up to?
-- Use specific language from the inputs
-- Don't pad with generic filler — every sentence should earn its place
-- Match language to role level
-- The verbal summary should sound like a real person, not a written document read aloud
-${emphasis ? `- Weave in the emphasis naturally: ${emphasis}` : ''}
-
-Respond ONLY with valid JSON, no other text:
-{
-  "opening_statement": "the year-end opening statement",
-  "accomplishment_bullets": ["bullet 1", "bullet 2", "...one per accomplishment provided"],
-  "growth_narrative": "the growth narrative paragraph",
-  "verbal_summary": "the verbal summary written to be spoken",
-  "theme": "one sentence naming the through-line theme of their year — what story do these accomplishments tell together?"
-}`;
-  }
-
-  function renderSingle(result) {
-    const el = document.getElementById('results');
-    el.innerHTML = `
-      <div class="output-card">
-        <div class="output-header self-assess" style="justify-content:space-between;">
-          <div>
-            <div class="output-title">Self-assessment version</div>
-            <div class="output-use">For written performance reviews and self-evaluations</div>
-          </div>
-          <button class="copy-btn" onclick="copyText(this, \`${escape(result.self_assessment)}\`)">Copy</button>
-        </div>
-        <div class="output-body">
-          <div class="output-text">${result.self_assessment}</div>
-          <div class="output-tip">${result.self_assessment_tip}</div>
-        </div>
-      </div>
-
-      <div class="output-card">
-        <div class="output-header resume" style="justify-content:space-between;">
-          <div>
-            <div class="output-title">Resume bullet</div>
-            <div class="output-use">For your resume, LinkedIn, or promotion materials</div>
-          </div>
-          <button class="copy-btn" onclick="copyText(this, \`${escape(result.resume_bullet)}\`)">Copy</button>
-        </div>
-        <div class="output-body">
-          <div class="output-text">${result.resume_bullet}</div>
-          <div class="output-tip">${result.resume_tip}</div>
-        </div>
-      </div>
-
-      <div class="output-card">
-        <div class="output-header verbal" style="justify-content:space-between;">
-          <div>
-            <div class="output-title">Verbal version</div>
-            <div class="output-use">For promotion or interview conversations — say this out loud</div>
-          </div>
-          <button class="copy-btn" onclick="copyText(this, \`${escape(result.verbal)}\`)">Copy</button>
-        </div>
-        <div class="output-body">
-          <div class="output-text">${result.verbal}</div>
-          <div class="output-tip">${result.verbal_tip}</div>
-        </div>
-      </div>
-
-      <div class="output-card" style="border-color: rgba(169,50,85,0.2);">
-        <div class="output-body" style="background: #fdf8f9; border-radius: 12px;">
-          <div style="font-size:11px;font-weight:600;color:#A93255;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">What makes this accomplishment compelling</div>
-          <div style="font-size:14px;color:#19323C;line-height:1.6;">${result.impact_note}</div>
-        </div>
-      </div>
-
-      <button class="reset-btn" onclick="resetTool()">Build another accomplishment</button>
-    `;
-
-    el.style.display = 'block';
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  function renderYearEnd(result) {
-    const bullets = result.output2_bullets.map(b =>
-      `<div style="display:flex;gap:8px;margin-bottom:6px;"><span style="color:#A93255;flex-shrink:0;">→</span><span>${b}</span></div>`
-    ).join('');
-
-    const labels = result.output_labels || ['Opening statement', 'Key accomplishments', 'Narrative', 'Verbal summary'];
-    const uses = result.output_uses || ['', '', '', 'Say this out loud'];
-    const colors = ['#19323C', '#A93255', '#3A5560', '#3A5560'];
-
-    const el = document.getElementById('results');
-    el.innerHTML = `
-      <div style="background:#FAEEDA;border-radius:10px;padding:12px 16px;margin-bottom:1rem;border:1px solid #FAC775;">
-        <div style="font-size:12px;font-weight:600;color:#633806;margin-bottom:4px;">The through-line of your accomplishments</div>
-        <div style="font-size:14px;color:#412402;line-height:1.6;">${result.theme}</div>
-      </div>
-
-      <div class="output-card">
-        <div class="output-header" style="background:${colors[0]};justify-content:space-between;">
-          <div>
-            <div class="output-title">${labels[0]}</div>
-            <div class="output-use">${uses[0]}</div>
-          </div>
-          <button class="copy-btn" onclick="copyText(this, \`${escape(result.output1)}\`)">Copy</button>
-        </div>
-        <div class="output-body">
-          <div class="output-text">${result.output1}</div>
-        </div>
-      </div>
-
-      <div class="output-card">
-        <div class="output-header" style="background:${colors[1]};justify-content:space-between;">
-          <div>
-            <div class="output-title">${labels[1]}</div>
-            <div class="output-use">${uses[1]}</div>
-          </div>
-          <button class="copy-btn" onclick="copyText(this, \`${escape(result.output2_bullets.join('\n'))}\`)">Copy all</button>
-        </div>
-        <div class="output-body">
-          <div style="font-size:14px;color:#19323C;line-height:1.7;">${bullets}</div>
-        </div>
-      </div>
-
-      <div class="output-card">
-        <div class="output-header" style="background:${colors[2]};justify-content:space-between;">
-          <div>
-            <div class="output-title">${labels[2]}</div>
-            <div class="output-use">${uses[2]}</div>
-          </div>
-          <button class="copy-btn" onclick="copyText(this, \`${escape(result.output3)}\`)">Copy</button>
-        </div>
-        <div class="output-body">
-          <div class="output-text">${result.output3}</div>
-        </div>
-      </div>
-
-      <div class="output-card">
-        <div class="output-header" style="background:${colors[3]};justify-content:space-between;">
-          <div>
-            <div class="output-title">${labels[3]}</div>
-            <div class="output-use">${uses[3]}</div>
-          </div>
-          <button class="copy-btn" onclick="copyText(this, \`${escape(result.output4)}\`)">Copy</button>
-        </div>
-        <div class="output-body">
-          <div class="output-text">${result.output4}</div>
-        </div>
-      </div>
-
-      <button class="reset-btn" onclick="resetTool()">Summarize another set of accomplishments</button>
-    `;
-
-    el.style.display = 'block';
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  function escape(str) {
-    return str ? str.replace(/`/g, '\\`').replace(/\$/g, '\\$') : '';
-  }
-
-  function copyText(btn, text) {
-    const decoded = text.replace(/\\`/g, '`').replace(/\\\$/g, '$');
-    navigator.clipboard.writeText(decoded).then(() => {
-      const orig = btn.textContent;
-      btn.textContent = 'Copied!';
-      setTimeout(() => { btn.textContent = orig; }, 2000);
-    });
-  }
-
-  function showError(msg) {
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('error-msg').textContent = msg;
-    document.getElementById('error-box').style.display = 'block';
-  }
-
-  function resetTool() {
-    document.getElementById('results').style.display = 'none';
-    document.getElementById('error-box').style.display = 'none';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  addEntry();
+  });
+
+  html += '<button class="reset-btn" onclick="resetTool()">Summarize another set of accomplishments</button>';
+  var el = document.getElementById('results');
+  el.innerHTML = html;
+  el.style.display = 'block';
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function copyText(btn, text) {
+  navigator.clipboard.writeText(text).then(function() {
+    var orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = orig; }, 2000);
+  });
+}
+
+function showError(msg) {
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('error-msg').textContent = msg;
+  document.getElementById('error-box').style.display = 'block';
+}
+
+function resetTool() {
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('error-box').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 </script>
 </body>
 </html>
