@@ -114,15 +114,13 @@
       </div>
 
       <div class="path-section active" id="single-path-tracker">
-        <div class="tracker-badge"><div class="tracker-dot"></div>Copy directly from your Friday reflection entries</div>
+        <div class="tracker-badge"><div class="tracker-dot"></div>Copy directly from your Weekly Log Friday reflection</div>
         <label class="field-label">Focus area</label>
         <input type="text" id="t-focus" placeholder="e.g. Be More Strategic, Communicate More Clearly">
-        <label class="field-label">What happened this week?</label>
-        <textarea id="t-happened" placeholder="e.g. Presented Q3 results to CFO. Led with recommendation instead of walking through methodology."></textarea>
-        <label class="field-label">How did I follow through?</label>
-        <textarea id="t-followthrough" placeholder="e.g. Yes — I prepared my recommendation before the meeting and opened with it."></textarea>
-        <label class="field-label">What was the result?</label>
-        <textarea id="t-result" placeholder="e.g. Meeting ran 15 minutes shorter. CFO approved the Q3 budget recommendation without revisions."></textarea>
+        <label class="field-label">What happened?</label>
+        <textarea id="t-happened" placeholder="e.g. Presented Q3 results to CFO. Led with my recommendation upfront instead of walking through the data first."></textarea>
+        <label class="field-label">What did it mean for the business or team?</label>
+        <textarea id="t-result" placeholder="e.g. Decision made in 20 minutes instead of being tabled. Saved the team 40 minutes of meeting time. My manager flagged it as a model for how to run executive reviews going forward."></textarea>
       </div>
 
       <div class="path-section" id="single-path-memory">
@@ -179,7 +177,7 @@
 
       <div class="path-section" id="multi-path-memory">
         <label class="field-label">Describe your key accomplishments</label>
-        <p class="sublabel">List your 3-6 strongest contributions. For each one describe what you did, what changed, and what it meant. Separate them with a blank line.</p>
+        <p class="sublabel">List your 3-6 strongest contributions. For each one: what you did, what changed, and what it meant — include numbers where you can (time saved, costs reduced, decisions shaped). Separate entries with a blank line.</p>
         <textarea class="tall" id="multi-memory-input" placeholder="Accomplishment 1:&#10;I shifted how I present data to senior leadership, leading with recommendations. This resulted in faster decisions and my Q3 budget being approved without revisions.&#10;&#10;Accomplishment 2:&#10;..."></textarea>
       </div>
     </div>
@@ -276,10 +274,10 @@ function addEntry() {
     (num > 1 ? '<button class="remove-entry" onclick="removeEntry(' + num + ')">Remove</button>' : '') +
     '<label class="field-label" style="margin-top:0;">Focus area</label>' +
     '<input type="text" id="e' + num + '-focus" placeholder="e.g. Be More Strategic" style="margin-bottom:8px;">' +
-    '<label class="field-label">What happened + how I followed through</label>' +
-    '<textarea id="e' + num + '-what" placeholder="Paste your tracker entries here..." style="min-height:80px;margin-bottom:8px;"></textarea>' +
-    '<label class="field-label">What was the result?</label>' +
-    '<textarea id="e' + num + '-result" placeholder="What changed? What did it mean?" style="min-height:70px;margin-bottom:0;"></textarea>';
+    '<label class="field-label">What happened?</label>' +
+    '<textarea id="e' + num + '-what" placeholder="Paste from your Weekly Log What happened column..." style="min-height:80px;margin-bottom:8px;"></textarea>' +
+    '<label class="field-label">What did it mean for the business or team?</label>' +
+    '<textarea id="e' + num + '-result" placeholder="Numbers make it real — time saved, decisions made, costs avoided, trust built..." style="min-height:70px;margin-bottom:0;"></textarea>';
   container.appendChild(block);
 }
 
@@ -293,13 +291,12 @@ async function runSingle() {
   if (currentSinglePath === 'tracker') {
     var happened = document.getElementById('t-happened').value.trim();
     var result = document.getElementById('t-result').value.trim();
-    if (!happened && !result) { alert('Please fill in at least what happened and what the result was.'); return; }
+    if (!happened && !result) { alert('Please fill in at least what happened and what it meant.'); return; }
     var focus = document.getElementById('t-focus').value.trim();
-    var followthrough = document.getElementById('t-followthrough').value.trim();
     if (focus) content += 'Focus area: ' + focus + '\n';
     if (happened) content += 'What happened: ' + happened + '\n';
-    if (followthrough) content += 'How I followed through: ' + followthrough + '\n';
-    if (result) content += 'Result: ' + result;
+
+    if (result) content += 'What it meant: ' + result;
   } else {
     var action = document.getElementById('m-action').value.trim();
     var mresult = document.getElementById('m-result').value.trim();
@@ -333,7 +330,7 @@ async function runMulti() {
         content += '\n--- Accomplishment ' + (i+1) + ' ---\n';
         if (focus) content += 'Focus: ' + focus + '\n';
         if (what) content += 'What happened: ' + what + '\n';
-        if (res) content += 'Result: ' + res + '\n';
+        if (res) content += 'What it meant: ' + res + '\n';
       }
     });
     if (!hasContent) { alert('Please add at least one accomplishment entry before generating.'); return; }
